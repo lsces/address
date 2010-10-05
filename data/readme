@@ -1,0 +1,9 @@
+It is intended that this package will handle a range of postcode data
+files which are provided free by the relevant country or postal authority.
+
+The initial target is the UK postcode table, but the overlying structure 
+of the country and zone tables from the commerce package are also integrated, 
+and these will be also be moved to .csv listings in this directory to simplify 
+management of the data.
+
+Other .csv data files will also be stored here. 
