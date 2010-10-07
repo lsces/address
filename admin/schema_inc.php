@@ -38,7 +38,7 @@ $tables = array(
   primary_name C(120),
   secondary_name C(120),
   postcode C(10),
-  CONSTRAINT ', CONSTRAINT `addr_postcode_ref` FOREIGN KEY ( `postcode` ) REFERENCES `address_postcode`( `postcode` )
+  CONSTRAINT ', CONSTRAINT `addr_postcode_ref` FOREIGN KEY ( `postcode` ) REFERENCES `address_postcode`( `postcode` )'
 ",
 
 'address_format' => "
