@@ -11,7 +11,7 @@ $tables = array(
 ",
 
 'address_zones' => "
-  zone_id I4 PRIMARY,
+  zone_id I4 PRIMARY AUTO,
   zone_country_id I4,
   zone_code C(32),
   zone_name C(64)
@@ -27,9 +27,7 @@ $tables = array(
   zone_id I4,
   country_id I4,
   grideast F,
-  gridnorth F,
-  CONSTRAINT ', CONSTRAINT `addr_book_zone_ref` FOREIGN KEY ( `zone_id` ) REFERENCES `address_zones`( `zone_id` )
-  			  , CONSTRAINT `addr_book_country_ref` FOREIGN KEY ( `country_id` ) REFERENCES `address_country`( `country_id` )'
+  gridnorth F
 ",
 
 'address_book' => "
@@ -37,8 +35,7 @@ $tables = array(
   customers_id I4,
   primary_name C(120),
   secondary_name C(120),
-  postcode C(10),
-  CONSTRAINT ', CONSTRAINT `addr_postcode_ref` FOREIGN KEY ( `postcode` ) REFERENCES `address_postcode`( `postcode` )'
+  postcode C(10)
 ",
 
 'address_format' => "
@@ -102,7 +99,7 @@ $tables = array(
 global $gBitInstaller;
 
 $indices = array (
-  'countries_name_zen_idx' => array( 'table' => 'address_country', 'cols' => 'countries_name', 'opts' => NULL),
+  'countries_name_zen_idx' => array( 'table' => 'address_country', 'cols' => 'country_name', 'opts' => NULL),
 );
 
 $gBitInstaller->registerSchemaIndexes( ADDRESS_PKG_NAME, $indices );
