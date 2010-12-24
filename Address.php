@@ -354,5 +354,39 @@ class Address extends LibertyBase {
 		return( count( $this->mErrors ) == 0 ); 
 	}
 	
+
+	/**
+	 * Delete nspd data and all related records
+	 */
+	function FTPCExpunge()
+	{
+		$ret = FALSE;
+		$query = "DELETE FROM `".BIT_DB_PREFIX."address_postcode`";
+		$result = $this->mDb->query( $query );
+		return $ret;
+	}
+
+	/**
+	 * PostcodeRecordLoad( $data ); 
+	 * NSPD postcode file import 
+	 */
+	function FTPCRecordLoad( &$data ) {
+		$table = BIT_DB_PREFIX."address_postcode";
+
+		$pDataHash['record_store']['postcode'] = $data[0];
+		$pDataHash['record_store']['add1'] = $data[1];
+		$pDataHash['record_store']['add2'] = $data[2];
+		$pDataHash['record_store']['add3'] = $data[3];
+		$pDataHash['record_store']['add4'] = $data[4];
+		$pDataHash['record_store']['town'] = $data[5];
+		$pDataHash['record_store']['county'] = $data[6];
+		
+		$this->mDb->StartTrans();
+		$result = $this->mDb->associateInsert( $table, $pDataHash['record_store'] );
+		$this->mDb->CompleteTrans();
+
+		return( count( $this->mErrors ) == 0 ); 
+	}
+	
 }
 ?>
