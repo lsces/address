@@ -30,7 +30,7 @@ class Address extends LibertyBase {
 	 * @param integer Contact Id identifer
 	 */
 	function Address( $pAddressId = NULL, $pCustomerId = NULL ) {
-		LibertyBase::LibertyBase();
+		parent::__construct();
 		$this->mAddressId = (int)$pAddressId;
 		$this->mCustomerId = (int)$pCustomerId;
 		$this->mHouseName = '';
